@@ -1,0 +1,13 @@
+body {
+  padding-top: 3.5rem;
+}
+
+.product {
+  width: 90%;
+  align-self: center;
+  padding: auto;
+  border: 3px;
+  border-style: outset;
+  border-color: blueviolet;
+}
+
