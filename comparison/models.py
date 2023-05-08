@@ -1,8 +1,6 @@
 from django.db import models
-
-from account.models import User
 from catalog.models import Product
-
+from account.models import User
 
 class Order(models.Model):
     customer = models.ForeignKey(User, related_name='customer',
@@ -11,8 +9,8 @@ class Order(models.Model):
     created = models.DateTimeField(auto_now_add=True, verbose_name='Дата и время создания')
 
     class Meta:
-        verbose_name = 'Заказ'
-        verbose_name_plural = 'Заказы'
+        verbose_name = 'Товар'
+        verbose_name_plural = 'Товары'
 
     def __str__(self):
         return f'{self.customer} - {self.created}'
@@ -22,4 +20,4 @@ class ProductsInOrder(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, verbose_name='Заказ')
     product = models.ForeignKey(Product, on_delete=models.PROTECT, verbose_name='Товар',
                                 related_name='count_in_order',)
-    quantity = models.PositiveSmallIntegerField(verbose_name='Количество товара в заказе')
+    quantity = models.PositiveSmallIntegerField(verbose_name='Количество товара в сравнении')

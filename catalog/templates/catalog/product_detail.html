@@ -4,88 +4,134 @@
     {{ product.title }}
 {% endblock %}
 {% block catalog %}
-<div class="container mt-3">
+<div class="container">
     <div class="row">
-      <div class="col-md-12">
-        <h2>{{ product.title }} </h2>
+      <div class="col">
+        <p></p>
+        <p></p>
+        <p></p>
         <img src="{{ product.image.url }}" width="300">
-        <p>{{ product.description }}</p>
-        {% include 'add_to_cart.html' %}
       </div>
+        <div class="col">
+            <p></p>
+            <p></p>
+            <p></p>
+            <h2>{{ product.title }} </h2>
+            <p>{{ product.description_little }}</p>
+            <h3 style="color: red">{{ product.price }}  р</h3>
+            {% include 'add_to_cart.html' %}
+
+        </div>
     </div>
-    <hr>
-    <h3>Характеристики</h3>
-    <h4>Заводские данные</h4>
-    <p>Гарантия от продавца: {{ product.warranty }}</p>
-    <h4>Общие параметры</h4>
-    <p>Тип: {{ product.type }}</p>
-    <p>Модель: {{ product.Model }}</p>
-    <p>Год релиза: {{ product.release_year }}</p>
-    <h4>Внешний вид</h4>
-    <p>Цвет: {{ product.Color }}</p>
-    <h4>Мобильная связь</h4>
-    <p>Поддержка сетей: {{ product.Network_support }}</p>
-    <p>Формат SIM-карт: {{ product.SIM_format }}</p>
-    <p>Количество физических SIM-карт: {{ product.quantity_SIM }}</p>
-    <h4>Экран</h4>
-    <p>Диагональ экрана (дюйм): {{ product.diagonal }}</p>
-    <p>Разрешение экрана: {{ product.resolution }}</p>
-    <p>Плотность пикселей: {{ product.density }}</p>
-    <p>Технология изготовления экрана: {{ product.technology }}</p>
-    <p>Количество цветов экрана: {{ product.Color_quantity }}</p>
-    <h4>Экран</h4>
-    <p>Материал корпуса: {{ product.Material }}</p>
-    <h4>Система</h4>
-    <p>Операционная система: {{ product.OS }}</p>
-    <p>Версия операционной системы: {{ product.OS_version }}</p>
-    <p>Модель процессора: {{ product.processor }}</p>
-    <p>Количество ядер: {{ product.core_quantity }}</p>
-    <p>Частота процессора: {{ product.processor_frequency }}</p>
-    <p>Техпроцесс: {{ product.tech_process }}</p>
-    <p>Графический ускоритель: {{ product.GPU }}</p>
-    <p>Объем встроенной памяти: {{ product.Memory }}</p>
-    <p>Слот для карты памяти: {{ product.Memory_card }}</p>
-    <h4>Основная камера</h4>
-    <p>Количество основных камер: {{ product.main_camera_quantity }}</p>
-    <p>Количество мегапикселей основной камеры: {{ product.Megapixel_main_camera }}</p>
-    <h4>Видеосъемка</h4>
-    <p>Формат видеосъемки: {{ product.video_format }}</p>
-    <p>Разрешение видео и частота кадров: {{ product.resolution_video }}</p>
-    <h4>Фронтальная камера</h4>
-    <p>Количество мегапикселей фронтальной камеры: {{ product.Megapixel_front_camera }}</p>
-    <h4>Аудио</h4>
-    <p>Стереодинамики: {{ product.Stereo_dynamics }}</p>
-    <p>Форматы аудиофайлов: {{ product.format_audio_files }}</p>
-    <h4>Коммуникации</h4>
-    <p>Версия Bluetooth: {{ product.bluetooth_version }}</p>
-    <p>Стандарт Wi-Fi: {{ product.Wi_Fi_standard }}</p>
-    <p>NFC: {{ product.NFC }}</p>
-    <p>Системы навигации: {{ product.Navigation_system }}</p>
-    <p>ИК-порт: {{ product.Ik_port }}</p>
-    <h4>Проводные интерфейсы</h4>
-    <p>Интерфейс: {{ product.interface }}</p>
-    <p>Разъем для наушников: {{ product.connector_headphones }}</p>
-    <h4>Дополнительная информация</h4>
-    <p>Наушники в комплекте: {{ product.Headphones_included }}</p>
-    <p>Зарядное устройство в комплекте: {{ product.battery_charger }}</p>
-    <p>Комплектация: {{ product.equipment }}</p>
-    <p>Биометрическая защита: {{ product.biometric_protection }}</p>
-    <p>Особенности, дополнительно: {{ product.features_optional }}</p>
-    <h4>Питание</h4>
-    <p>Тип аккумулятора: {{ product.battery_type }}</p>
-    <h4>Габариты и вес</h4>
-    <p>Ширина: {{ product.width }}</p>
-    <p>Высота: {{ product.Height }}</p>
-    <p>Толщина: {{ product.Thickness }}</p>
-    <p>Вес: {{ product.Weight }}</p>
 
     <hr>
-    {% for reviews in product.reviews.get_queryset%}
-        <p>{{ reviews.rating|view_rating }}</p>
-        <span>{{ reviews.name }}</span>
-    <p> {{ reviews.review }}</p>
-        <hr>
-    {% endfor %}
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#description">Описание</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#characteristics">Характеристики</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#reviews">Отзывы</a>
+        </li>
+        <li class="nav-item>">
+            <a class="nav-link" data-toggle="tab" href="tests">Тесты</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="description">
+            <h3>Описание</h3>
+            <p>{{ product.description }}</p>
+        </div>
+        <div class="tab-pane fade" id="characteristics">
+            <p></p>
+            <h3 align="center">Характеристики</h3>
+            <p></p>
+            <h4>Заводские данные</h4>
+            <p>Гарантия от продавца: {{ product.warranty }}</p>
+            <hr>
+            <h4>Общие параметры</h4>
+            <p>Тип: {{ product.type }}</p>
+            <p>Модель: {{ product.Model }}</p>
+            <p>Год релиза: {{ product.release_year }}</p>
+            <hr>
+            <h4>Внешний вид</h4>
+            <p>Цвет: {{ product.Color }}</p>
+            <hr>
+            <h4>Мобильная связь</h4>
+            <p>Поддержка сетей: {{ product.Network_support }}</p>
+            <p>Формат SIM-карт: {{ product.SIM_format }}</p>
+            <p>Количество физических SIM-карт: {{ product.quantity_SIM }}</p>
+            <hr>
+            <h4>Экран</h4>
+            <p>Диагональ экрана (дюйм): {{ product.diagonal }}</p>
+            <p>Разрешение экрана: {{ product.resolution }}</p>
+            <p>Плотность пикселей: {{ product.density }}</p>
+            <p>Технология изготовления экрана: {{ product.technology }}</p>
+            <p>Количество цветов экрана: {{ product.Color_quantity }}</p>
+            <h4>Экран</h4>
+            <p>Материал корпуса: {{ product.Material }}</p>
+            <h4>Система</h4>
+            <p>Операционная система: {{ product.OS }}</p>
+            <p>Версия операционной системы: {{ product.OS_version }}</p>
+            <p>Модель процессора: {{ product.processor }}</p>
+            <p>Количество ядер: {{ product.core_quantity }}</p>
+            <p>Частота процессора: {{ product.processor_frequency }}</p>
+            <p>Техпроцесс: {{ product.tech_process }}</p>
+            <p>Графический ускоритель: {{ product.GPU }}</p>
+            <p>Объем встроенной памяти: {{ product.Memory }}</p>
+            <p>Слот для карты памяти: {{ product.Memory_card }}</p>
+            <h4>Основная камера</h4>
+            <p>Количество основных камер: {{ product.main_camera_quantity }}</p>
+            <p>Количество мегапикселей основной камеры: {{ product.Megapixel_main_camera }}</p>
+            <h4>Видеосъемка</h4>
+            <p>Формат видеосъемки: {{ product.video_format }}</p>
+            <p>Разрешение видео и частота кадров: {{ product.resolution_video }}</p>
+            <h4>Фронтальная камера</h4>
+            <p>Количество мегапикселей фронтальной камеры: {{ product.Megapixel_front_camera }}</p>
+            <h4>Аудио</h4>
+            <p>Стереодинамики: {{ product.Stereo_dynamics }}</p>
+            <p>Форматы аудиофайлов: {{ product.format_audio_files }}</p>
+            <h4>Коммуникации</h4>
+            <p>Версия Bluetooth: {{ product.bluetooth_version }}</p>
+            <p>Стандарт Wi-Fi: {{ product.Wi_Fi_standard }}</p>
+            <p>NFC: {{ product.NFC }}</p>
+            <p>Системы навигации: {{ product.Navigation_system }}</p>
+            <p>ИК-порт: {{ product.Ik_port }}</p>
+            <h4>Проводные интерфейсы</h4>
+            <p>Интерфейс: {{ product.interface }}</p>
+            <p>Разъем для наушников: {{ product.connector_headphones }}</p>
+            <h4>Дополнительная информация</h4>
+            <p>Наушники в комплекте: {{ product.Headphones_included }}</p>
+            <p>Зарядное устройство в комплекте: {{ product.battery_charger }}</p>
+            <p>Комплектация: {{ product.equipment }}</p>
+            <p>Биометрическая защита: {{ product.biometric_protection }}</p>
+            <p>Особенности, дополнительно: {{ product.features_optional }}</p>
+            <h4>Питание</h4>
+            <p>Тип аккумулятора: {{ product.battery_type }}</p>
+            <h4>Габариты и вес</h4>
+            <p>Ширина: {{ product.width }}</p>
+            <p>Высота: {{ product.Height }}</p>
+            <p>Толщина: {{ product.Thickness }}</p>
+            <p>Вес: {{ product.Weight }}</p>
+        </div>
+        <div class="tab-pane fade " id="reviews">
+            {% for reviews in product.reviews.get_queryset%}
+                <p>{{ reviews.rating|view_rating }}</p>
+                <span>{{ reviews.name }}</span>
+                <p> {{ reviews.review }}</p>
+                <hr>
+            {% endfor %}
+
+        </div>
+
+    </div>
+    <hr>
+
+
+    <hr>
+
     <div class="row">
       <div class="col-lg-6 col-md-8 col-sm-12">
         <h4>Оставьте отзыв:</h4>

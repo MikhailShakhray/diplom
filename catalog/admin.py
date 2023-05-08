@@ -14,8 +14,6 @@ admin.site.register(Category, CustomMPTTModelAdmin,)
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('title', 'category',)
-    # prepopulated_fields = {'slug': ('title',)}
-    # search_fields = ('title', 'display')
     list_filter = ('category',)
     fieldsets = (
         ('None', {'fields': ('title', 'description_little', 'description', 'image', 'price'),

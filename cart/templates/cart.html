@@ -29,8 +29,9 @@
                 {% for value in cart.values %}
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
                         <div>
+                            <img src="{{ value.product.image.url }}" width="300">
                             <h6 class="my-0">{{ value.product.title}}</h6>
-                            <small class="text-muted">{{ value.product.description }}</small>
+                            <small class="text-muted">{{ value.product.description_little }}</small>
                         </div>
                         <span class="text-muted">{{ value.quantity }}</span>
                     </li>
